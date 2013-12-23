@@ -1,0 +1,152 @@
+{{right_sidebar_enabled = True}}
+{{extend 'layout.html'}}
+<style>
+    .myButton {
+        
+        -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+        background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+        
+        background-color:#768d87;
+        
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        
+        border:1px solid #566963;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:5px 6px;
+        text-decoration:none;
+        
+        text-shadow:0px -1px 0px #2b665e;
+        
+    }
+    .myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+        background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+        
+        background-color:#6c7c7c;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+    #side{position:absolute;right:0px;top:0px;background-color:#FAF9EA;min-height:297px;width:300px}
+    #side_word{position:absolute;top:30px;left:50px;}     
+</style>
+<script>
+	var properites;
+	var steps=0;
+	var over_already=0;
+	function select(x)
+    {
+    	if(over_already==0)
+    	document.getElementById(x).style.color = 'red';
+    }
+    function deselect(x)
+    {
+    	if(over_already==0)
+    	document.getElementById(x).style.color = 'black';
+    }
+    function question(x)
+    {
+    	properites = x;
+    	if (steps==0)
+        {
+        	document.getElementById("questions").style.display = 'block';
+        	steps=1;
+        }
+    	else
+        {
+    		document.getElementById("questions").style.display = 'none';
+    		steps=0;
+        }
+    }
+    function func1()
+    {
+    	over_already=1;
+    	document.getElementById(properites).style.color="blue";
+    }
+    function func2()
+    {
+    	over_already=1;
+    	document.getElementById(properites).style.color="green";
+    }
+    function func3()
+    {
+    	over_already=1;
+    	document.getElementById(properites).style.color="#ffc125";
+    }
+  var dis=false;
+  function function1()
+  {
+  if(dis==false)
+  {
+  document.getElementById("help").style.display="block";
+  dis=true;
+  }
+  else
+  {
+  document.getElementById("help").style.display="None";
+  dis=false;
+  }
+  }    
+</script>
+<br />
+<br />
+
+<form><input type='hidden' id="word" name="word" value="" /></form>
+{{import re}}
+{{for i in range(0,len(l)):}}
+{{if l[i].find(w)!=-1:}}
+<span style="color:red; font-size:25px;">{{=l[i]}}</span>
+{{else:}}
+<span style="font-size:25px" id="{{=i}}" onMouseOver="select('{{=i}}');" onMouseOut="deselect('{{=i}}');" onClick="question('{{=i}}');jQuery('#word').val('{{=l[i]}}')">{{=l[i]}}</span>
+{{pass}}
+{{pass}}
+<br />
+<br />
+<div id="questions" style="display:none;">
+    <input type="radio" onClick="ajax('novi_insert',['word','property'],'target');func1();" name="property" id='property' value='1' />Relation<br>
+    <input type="radio" onClick="ajax('novi_insert',['word','property'],'target');func2();" name="property" id='property' value='2' />Word Property<br>
+    <input type="radio" onClick="ajax('novi_insert',['word','property'],'target');func3();" name="property" id='property' value='3' />Both<br>
+</div>
+<br />
+<br />
+<br />
+<br />
+<div style='display:none' name='target' id='target'>
+</div>
+<div>
+   	<p><span style="background-color:green;height:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  Word Property &nbsp;&nbsp;  
+	<span style="background-color:blue;height:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  Relation &nbsp;&nbsp;
+	<span style="background-color:#ffc125;height:25px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>  Both</p>
+</div>
+
+<div id='side'>
+{{block right_sidebar}}
+    <p style="font-weight:bold; font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confused?&nbsp;&nbsp;&nbsp;<input  class="myButton" type="button" onclick="function1();" name="help" value="Click Here!"></p> 
+<span id="help" style="display:None;">
+    <p><b>&nbsp;&nbsp;&nbsp;&nbsp;Click "generate" button to get a random word.<br />&nbsp;&nbsp;&nbsp;&nbsp;It will give you a random word based on your &nbsp;&nbsp;&nbsp;&nbsp;level.</b></p>
+</span>
+{{end}}
+</div>

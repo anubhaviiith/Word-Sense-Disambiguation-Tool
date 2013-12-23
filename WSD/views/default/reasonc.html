@@ -1,0 +1,95 @@
+{{extend 'layout.html'}}
+<style>
+    .myButton {
+        
+        -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+        background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+        
+        background-color:#768d87;
+        
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        
+        border:1px solid #566963;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:5px 6px;
+        text-decoration:none;
+        
+        text-shadow:0px -1px 0px #2b665e;
+        
+    }
+    .myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+        background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+        
+        background-color:#6c7c7c;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+    #side{position:absolute;right:0px;top:0px;background-color:#FAF9EA;height:310px;width:300px}
+    #side_word{position:absolute;top:30px;left:50px;}
+</style>
+
+<script>
+  var dis=false;
+  function function1()
+  {
+  if(dis==false)
+  {
+  document.getElementById("help").style.display="block";
+  dis=true;
+  }
+  else
+  {
+  document.getElementById("help").style.display="None";
+  dis=false;
+  }
+  }    
+</script>
+
+<br><br>
+<form method='POST'>
+  <span style="font-weight:bold;font-size:15px;">The hindi translation of the sentence is:</span><br><br>
+    <span style="position:relative;left:80px;font-size:14px;">
+{{for i in r:}}
+{{=i.hsentence}}<br>
+{{break}}
+        {{pass}}</span>
+    <br><br>
+<!-- <span style="font-weight:bold;font-size:15px;">Your reason for this choice:</span>&nbsp;&nbsp;<input type='text' name='hindir'>&nbsp;&nbsp;-->
+<input class="myButton" type="submit" name="advanced" value="Advanced"><br><br />
+<input class="myButton" type="submit" name="novice" value="Novice"><br><br>
+</form>
+
+
+<div id='side'>
+{{block right_sidebar}}
+    <p style="font-weight:bold; font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confused?&nbsp;&nbsp;&nbsp;<input  class="myButton" type="button" onclick="function1();" name="help" value="Click Here!"></p> 
+<span id="help" style="display:None;">
+    <p><b>The hindi translation has been given for the the sentence you had selected. If you are comfortable with the different grammatical aspects of english and hindi you can select the advanced user option. If you are new, you may select the novice option.</b></p>
+</span>
+{{end}}
+</div>

@@ -1,0 +1,95 @@
+{{extend 'layout.html'}}
+{{right_sidebar_enabled = True}}
+
+<style>
+ #side{position:absolute;right:0px;top:0px;background-color:#FAF9EA;min-height:335px;width:300px}
+    #side_word{position:absolute;top:30px;left:50px;} 
+ .myButton {
+        
+        -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+        background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+        
+        background-color:#768d87;
+        
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        
+        border:1px solid #566963;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 18px;
+        text-decoration:none;
+        
+        text-shadow:0px -1px 0px #2b665e;
+        
+    }
+    .myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+        background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+        
+        background-color:#6c7c7c;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+</style>
+
+<script>
+var dis=false;
+  function function1()
+  {
+  if(dis==false)
+  {
+  document.getElementById("help").style.display="block";
+  dis=true;
+  }
+  else
+  {
+  document.getElementById("help").style.display="None";
+  dis=false;
+  }
+  } 
+
+</script>
+
+<br><br>
+<b>Given Word is : {{=session.word}}</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Part of Speech:</b><b style='color:red'> {{=psp}}</b>
+<br><br>
+<br><br>
+<h3>Is Part of speech sufficient in deciding the translation for the given word in the sentence ?</h3>
+<form method='POST'>
+		Yes <input type='radio' value='yes' name='typ'/><br/>
+		No <input type='radio' value='no' name='typ'/><br/><br/><br/>
+		<input type='submit' name='submit'value='Go'/>
+</form>
+
+<div id='side'>
+{{block right_sidebar}}
+    <p style="font-weight:bold; font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confused?&nbsp;&nbsp;&nbsp;<input  class="myButton" type="button" onclick="function1();" name="help" value="Click Here!"></p> 
+<span id="help" style="display:None;">
+    <p><b>&nbsp;The Part of Speech of the word as used in the &nbsp;sentence is given. Is the information which you &nbsp;are getting from this enough for you to form &nbsp;the rules. If yes, select yes, if no, select no (in &nbsp;this case you will be given further information &nbsp;to select the reason). <br />&nbsp;For further assistance please visit the following &nbsp;link: <a href="http://www.englishclub.com/grammar/parts-of-speech_1.htm">part of speech help</a></b></p>
+</span>
+{{end}}
+</div>

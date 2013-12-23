@@ -1,0 +1,257 @@
+# -*- coding: utf-8 -*-
+# this file is released under public domain and you can use without limitations
+
+#########################################################################
+## This is a samples controller
+## - index is the default action of any application
+## - user is required for authentication and authorization
+## - download is for downloading files uploaded in the db (does streaming)
+## - call exposes all registered services (none by default)
+#########################################################################
+import os,subprocess
+def index():
+    redirect('home')
+    """
+    example action using the internationalization operator T and flash
+    rendered by views/default/index.html or views/generic.html
+    """
+    response.flash = "Welcome to web2py!"
+    return dict(message=T('Hello World'))
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    """
+    return dict(form=auth())
+
+
+def download():
+    """
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request,db)
+
+
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
+
+
+@auth.requires_signature()
+def data():
+    """
+    http://..../[app]/default/data/tables
+    http://..../[app]/default/data/create/[table]
+    http://..../[app]/default/data/read/[table]/[id]
+    http://..../[app]/default/data/update/[table]/[id]
+    http://..../[app]/default/data/delete/[table]/[id]
+    http://..../[app]/default/data/select/[table]
+    http://..../[app]/default/data/search/[table]
+    but URLs must be signed, i.e. linked with
+      A('table',_href=URL('data/tables',user_signature=True))
+    or with the signed load operator
+      LOAD('default','data.load',args='tables',ajax=True,user_signature=True)
+    """
+    return dict(form=crud())
+
+
+
+
+@auth.requires_login()
+def home():
+    t = auth.user.id
+    h = db(db.rules.userid==t).select()
+    g = []
+    for i in h:
+        g.append(db(db.words.id==i.wid).select(db.words.word))
+    h=[]
+    for i in g:
+        for j in i:
+            h.append(j.word) 
+    h=list(set(h))
+    return dict(t=t,h=h)
+
+@auth.requires_login()
+def word_select():
+    if not request.vars.check:
+        redirect('home')
+    else:
+        check=0
+    if request.vars.submit:
+        w = request.vars.word
+        t = db(db.words).select()
+        for i in t:
+            if i.word==w:
+                session.word = w
+                session.ide = i.id
+                break
+        redirect('sentence_select')
+    return dict()
+
+
+@auth.requires_login()
+def word_selectc():
+    if not request.vars.check:
+        redirect('home')
+    else:
+        check=0
+    if request.vars.submit:
+        w = request.vars.word
+        t = db(db.words).select()
+        for i in t:
+            if i.word==w:
+                session.word = w
+                session.ide = i.id
+                break
+        redirect(URL('sentence_selectc',vars=dict(second=request.vars.second)))
+    return dict()
+    
+    
+    
+
+
+
+#@auth.requires_login()
+#def reason():
+#    t=session.senid
+#    pre=db((db.rules.wid==session.ide)&(db.rules.sid==session.sid)).select()
+#    c=0
+#    for i in pre:
+#        c+=1
+#    if request.vars.hindit:
+#        db.rules.insert(name=session.word+str(c),userid=auth.user.id,wid=session.ide,sid=session.sid,translation=hindit)
+#        redirect(URL('rel'))
+#    return dict()
+    
+    
+@auth.requires_login()
+def sentence_select():
+    f = ''
+    x = 0
+    if request.vars.submit and (request.vars.hindit):
+        t = request.vars.sentence
+        r = db(db.sentences.esentence==t).select(db.sentences.id)
+        for i in r:
+          session.sid=i.id
+          break
+        pre=db((db.rules.wid==session.ide)&(db.rules.userid==auth.user.id)).select()
+        c=0
+        f=0
+        for i in pre:
+            c+=1
+            if str(session.sid)==i.sid:
+                f=1
+                break
+        if f==0:
+            db.rules.insert(name=session.word+str(c),userid=auth.user.id,wid=session.ide,sid=session.sid,translation=request.vars.hindit)
+        redirect(URL('rel'))
+    return dict(w=session.word,d=session.ide,f=f)
+
+
+@auth.requires_login()
+def sentence_selectc():
+    f = ''
+    x = 0
+    if request.vars.submit:
+        t = request.vars.sentence
+        r = db(db.sentences.esentence==t).select(db.sentences.id)
+        for i in r:
+          hindit=i.id
+          session.sid=i.id
+          break
+        redirect(URL('reasonc',vars=dict(hindit=hindit)))
+    return dict(w=session.word,d=session.ide,f=f)
+
+
+@auth.requires_login()
+def reasonc():
+    t=session.sid
+    r = db(db.sentences.id==t).select(db.sentences.hsentence)
+    if request.vars.submit:
+        pre=db((db.rules.wid==session.ide)&(db.rules.userid==auth.user.id)).select()
+        c=0
+        f=0
+        for i in pre:
+            c+=1
+            print session.sid,i.sid
+            if i.sid==str(session.sid):
+                f=1
+                break
+        if f==0:
+            db.rules.insert(name=session.word+str(c),userid=auth.user.id,wid=session.ide,sid=session.sid)
+        redirect(URL('rel'))
+    return dict(r=r)
+
+@auth.requires_login()
+def delaccount():
+    if request.vars.submit:
+        db(db.auth_user.email==request.vars.email).delete()
+        redirect("home")
+    return dict()
+
+@auth.requires_login()
+def addword():
+    if request.vars.submit:
+        db.words.insert(word=request.vars.word)
+        db.sentences.insert(esentence=request.vars.esentence,hsentence=request.vars.hsentence)
+        w = db(db.words.word==request.vars.word).select(db.words.id)
+        s = db(db.sentences.esentence==request.vars.esentence).select(db.sentences.id)
+        for i in w:
+            for j in s:
+                db.links.insert(wid=i.id,sid=j.id)
+                break
+            break
+        session.flash="Word Added"
+        redirect('home')
+    return dict()
+@auth.requires_login()
+def delword():
+    if request.vars.submit:
+        g = db(db.words.word==request.vars.word).select(db.words.id)
+        for i in g:
+            db(db.words.id==i.id).delete()
+            db(db.rules.wid==i.id).delete()
+            y = db(db.links.wid==i.id).select(db.links.sid)
+            db(db.links.wid==i.id).delete()
+            for j in y:
+                db(db.sentences.id==j.sid).delete()
+                break
+            break
+            session.flash="Word Deleted "
+        redirect('home')
+    return dict()
+def rel():
+       s=db(db.sentences.id==session.sid).select(db.sentences.esentence)
+       s=s[0].esentence
+       f=open('sample','w')
+       st="<TITLE> test. </TITLE> \n <p> " + s + " </p>"
+       f.write(st)
+       from subprocess import Popen, PIPE, STDOUT
+       shell_command = 'Anusaaraka_stanford.sh  sample 0 True'
+       event = Popen(shell_command, shell=True, stdin=PIPE, stdout=PIPE, stderr=STDOUT)
+       #os.system("Anusaaraka_stanford.sh  sample 0 True")
+       f.close()
+       f=open('$HOME_anu_tmp/tmp/sample_tmp/2.1/word.dat','r')
+       a=f.read()
+       f.close()
+       return dict(a=a) 
+        
+def testt():
+    v=db(db.auth_user).select()
+    return dict(v=v)

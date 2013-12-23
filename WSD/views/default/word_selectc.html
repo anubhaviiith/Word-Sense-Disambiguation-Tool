@@ -1,0 +1,136 @@
+{{right_sidebar_enabled = True}}
+{{extend 'layout.html'}}
+<style>
+
+   
+    .myButton {
+        
+        -moz-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        -webkit-box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        box-shadow:inset 0px 1px 3px 0px #91b8b3;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #768d87), color-stop(1, #6c7c7c));
+        background:-moz-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-webkit-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-o-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:-ms-linear-gradient(top, #768d87 5%, #6c7c7c 100%);
+        background:linear-gradient(to bottom, #768d87 5%, #6c7c7c 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#768d87', endColorstr='#6c7c7c',GradientType=0);
+        
+        background-color:#768d87;
+        
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        border-radius:5px;
+        
+        border:1px solid #566963;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:bold;
+        padding:6px 18px;
+        text-decoration:none;
+        
+        text-shadow:0px -1px 0px #2b665e;
+        
+    }
+    .myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+        background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+        background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+        
+        background-color:#6c7c7c;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+    #side{position:absolute;right:0px;top:0px;background-color:#FAF9EA;min-height:297px;width:300px}
+    #side_word{position:absolute;top:30px;left:50px;}    
+  
+</style>
+{{t = []}}
+{{l = []}}
+{{h = []}}
+{{s = db(db.sentences.hsentence!='').select(db.sentences.id)}}
+{{for i in s:}}
+{{h.append(db(db.links.sid==i.id).select(db.links.wid))}}
+{{pass}}
+{{for i in h:}}
+{{for j in i:}}
+{{t.append(db(db.words.id==j.wid).select(db.words.word))}}
+{{pass}}
+{{pass}}
+{{for i in t:}}
+{{for j in i:}}
+{{l.append(j.word)}}
+{{pass}}
+{{pass}}
+<script>
+    var c=0;
+    var l=new Array();
+    var j=0;
+    {{for i in l :}}
+        l[j]='{{=i}}';
+        j=j+1;
+    {{pass}}
+    function randomv()
+    {
+                     if (c==l.length)
+        {
+            c=0;
+    }
+                     //var d=Math.floor(Math.random() * (l.length-1)) + 0;
+        document.forms.form.word.value = l[c];
+        c+=1;
+    }
+  var dis=false;
+  function function1()
+  {
+  if(dis==false)
+  {
+  document.getElementById("help").style.display="block";
+  dis=true;
+  }
+  else
+  {
+  document.getElementById("help").style.display="None";
+  dis=false;
+  }
+  }    
+</script>
+<br><br><br>
+<form method="POST" name="form">
+<input class="myButton" type="button" name="random" value="Generate" onClick="randomv();">
+<input type='text' name='word' readonly="True">
+<br />
+<br>
+{{level = db(db.user_level.email==auth.user.email).select(db.user_level.level)}}
+Select level : 
+<select name='level'>
+{{for i in level:}}
+{{for j in range(1,int(i.level)+1):}}
+<option value='{{=j}}'>{{=j}}</option>
+{{pass}}
+{{break}}
+{{pass}}
+</select><br>
+<br />
+<input type='submit' name="submit" value="Go">
+</form>
+
+<div id='side'>
+{{block right_sidebar}}
+    <p style="font-weight:bold; font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confused?&nbsp;&nbsp;&nbsp;<input  class="myButton" type="button" onclick="function1();" name="help" value="Click Here!"></p> 
+<span id="help" style="display:None;">
+    <p><b>&nbsp;&nbsp;&nbsp;&nbsp;Click "generate" button to get a random word.<br />&nbsp;&nbsp;&nbsp;&nbsp;It will give you a random word from the <br />&nbsp;&nbsp;&nbsp;&nbsp;database. The level can to selected to get the <br />&nbsp;&nbsp;&nbsp;&nbsp;sentences of that level. The level of a <br />&nbsp;&nbsp;&nbsp;&nbsp;sentence has been decided by various <br />&nbsp;&nbsp;&nbsp;&nbsp;parameters on how the translation of the <br />&nbsp;&nbsp;&nbsp;&nbsp;word will be affected by the other words <br />&nbsp;&nbsp;&nbsp;&nbsp;present in the sentence.</b></p>
+</span>
+{{end}}
+</div>

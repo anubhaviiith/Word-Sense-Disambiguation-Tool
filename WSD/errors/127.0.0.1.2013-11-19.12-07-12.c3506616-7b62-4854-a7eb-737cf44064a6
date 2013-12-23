@@ -1,0 +1,385 @@
+(dp1
+S'output'
+p2
+S'missing "pass" in view'
+p3
+sS'layer'
+p4
+S'ParserContainer'
+p5
+sS'code'
+p6
+S'response.write(\'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">\\n<!--\\n\\nDesign by Free CSS Templates\\nhttp://www.freecsstemplates.org\\nReleased for free under a Creative Commons Attribution 2.5 License\\n\\nTitle      : Interlude\\nVersion    : 1.0\\nReleased   : 20080903\\nDescription: A multi-column, fixed-width design for 800x600 resolutions.\\n\\n-->\\n<html xmlns="http://www.w3.org/1999/xhtml">\\n <head>\\n  <title>\\n   \', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'\\n  </title>\\n  \', escape=False)\nresponse.files.append(URL(request.application,\'static\',\'plugin_layouts/layouts/Interlude/default.css\'))\nresponse.write(\'\\n  \', escape=False)\nresponse.files.append(URL(\'static\',\'plugin_layouts/superfish.js\'))\nresponse.write(\'\\n  \', escape=False)\nresponse.write(\'<script type="text/javascript"><!--\\n    // These variables are used by the web2py_ajax_init function in web2py_ajax.js (which is loaded below).\\n    var w2p_ajax_confirm_message = "\', escape=False)\nresponse.write(T(\'Are you sure you want to delete this object?\'))\nresponse.write(\'";\\n    var w2p_ajax_date_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d\'))\nresponse.write(\'";\\n    var w2p_ajax_datetime_format = "\', escape=False)\nresponse.write(T(\'%Y-%m-%d %H:%M:%S\'))\nresponse.write(\'";\\n    //--></script>\\n\', escape=False)\nresponse.files.insert(0,URL(\'static\',\'js/jquery.js\'))\nresponse.files.insert(1,URL(\'static\',\'css/calendar.css\'))\nresponse.files.insert(2,URL(\'static\',\'js/calendar.js\'))\nresponse.files.insert(3,URL(\'static\',\'js/web2py.js\'))\nresponse.include_meta()\nresponse.include_files()\nresponse.write(\'\\n\', escape=False)\nresponse.write(\'\\n\\n  <style>\\n<!--ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}\\nul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}\\nul.web2py-menu-vertical li a { margin:0; padding: 1px 3px 1px 3px; border:0; width: 144px; color: white; font-size:12px;}\\n\\ndiv.flash { position: fixed; float: right; padding: 10px; top: 10px; right: 30px; opacity: 0.75; margin: 10px 10px 10px 10px; text-align: center; clear: both; color: #fff; font-size: 11pt; text-align: center; vertical-align: middle; cursor: pointer; background: black; border: 2px solid #fff; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 2; }-->\\n<!--\\ndiv.error { background-color: red; color: white; padding: 3px; }\\n.auth_navbar { text-align:right; z-index:20; position: absolute; top: 2px; right:30px; border:0; padding:0 }-->\\n#basic_login{position:relative;top:230px;right=-2px;}\\n  </style>\\n  \\n </head>\\n <body>\\n  <!-- start header -->\\n  <div id="header">\\n   <div id="logo">\\n    <h1>\\n     \', escape=False)\nresponse.write(response.title or request.application)\nresponse.write(\'\\n    </h1>\\n<!--    <p>\\n     <a href="http://www.freecsstemplates.org/">\\n      Design by Free CSS Templates\\n     </a>\\n    </p>-->\\n   </div>\\n   <!--\\n   <div id="menu">\\n   \\n    \', escape=False)\nresponse.write(MENU(response.menu,_class=\'web2py-menu\'))\nresponse.write(\'\\n   \\n    <script>\\n      jQuery(document).ready(function(){jQuery(\\\'ul.web2py-menu\\\').superfish({delay:400});});\\n    </script>\\n    \\n   </div>\\n   -->\\n   <div id="basic_login">\\n       \', escape=False)\nif auth.user:\n    response.write(\'\\n       <a style="position:relative;left:-370px;text-decoration:none;font-weight:bold"href="\', escape=False)\n    response.write(URL(\'home\'))\n    response.write(\'">HOME</a>\\n       \', escape=False)\n    pass\nresponse.write(\'\\n  <!-- start header -->\\n  \', escape=False)\ntry:\n    response.write(auth.navbar(action=URL(\'default\',\'user\')))\nexcept:pass\nresponse.write(\'\\n</div>\\n\\n\\n\\n\\n  </div>\\n\\n\\n  <hr />\\n\\n  <!-- end header -->\\n  <!-- start page -->\\n  <div id="wrapper">\\n   <div id="page">\\n    <!-- start content -->\\n    <div id="content">\\n<!--     <div class="flash">\', escape=False)\nresponse.write(response.flash or \'\')\nresponse.write(\'</div>-->\\n     \', escape=False)\nresponse.write(\'\\n<style>\\n\\t\\ttable a:link {\\n\\t\\t\\t\\tcolor: #666;\\n\\t\\t\\t\\tfont-weight: bold;\\n\\t\\t\\t\\ttext-decoration:none;\\n\\t\\t}\\n\\t\\ttable a:visited {\\n\\t\\t\\t\\tcolor: #999999;\\n\\t\\t\\t\\tfont-weight:bold;\\n\\t\\t\\t\\ttext-decoration:none;\\n\\t\\t}\\n\\t\\ttable a:active,\\n\\t\\ttable a:hover {\\n\\t\\t\\t\\tcolor: #bd5a35;\\n\\t\\t\\t\\ttext-decoration:underline;\\n\\t\\t}\\n\\t\\ttable {\\n\\t\\t\\t\\tfont-family:Arial, Helvetica, sans-serif;\\n\\t\\t\\t\\tcolor:#666;\\n\\t\\t\\t\\tfont-size:12px;\\n\\t\\t\\t\\ttext-shadow: 1px 1px 0px #fff;\\n\\t\\t\\t\\tbackground:#eaebec;\\n\\t\\t\\t\\tmargin:20px;\\n\\t\\t\\t\\tborder:#ccc 1px solid;\\n\\n\\t\\t\\t\\t-moz-border-radius:3px;\\n\\t\\t\\t\\t-webkit-border-radius:3px;\\n\\t\\t\\t\\tborder-radius:3px;\\n\\n\\t\\t\\t\\t-moz-box-shadow: 0 1px 2px #d1d1d1;\\n\\t\\t\\t\\t-webkit-box-shadow: 0 1px 2px #d1d1d1;\\n\\t\\t\\t\\tbox-shadow: 0 1px 2px #d1d1d1;\\n\\t\\t}\\n\\t\\ttable th {\\n\\t\\t\\t\\tpadding:21px 25px 22px 25px;\\n\\t\\t\\t\\tborder-top:1px solid #fafafa;\\n\\t\\t\\t\\tborder-bottom:1px solid #e0e0e0;\\n\\n\\t\\t\\t\\tbackground: #ededed;\\n\\t\\t\\t\\tbackground: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));\\n\\t\\t\\t\\tbackground: -moz-linear-gradient(top,  #ededed,  #ebebeb);\\n\\t\\t}\\n\\t\\ttable th:first-child {\\n\\t\\t\\t\\ttext-align: left;\\n\\t\\t\\t\\tpadding-left:20px;\\n\\t\\t}\\n\\t\\ttable tr:first-child th:first-child {\\n\\t\\t\\t\\t-moz-border-radius-topleft:3px;\\n\\t\\t\\t\\t-webkit-border-top-left-radius:3px;\\n\\t\\t\\t\\tborder-top-left-radius:3px;\\n\\t\\t}\\n\\t\\ttable tr:first-child th:last-child {\\n\\t\\t\\t\\t-moz-border-radius-topright:3px;\\n\\t\\t\\t\\t-webkit-border-top-right-radius:3px;\\n\\t\\t\\t\\tborder-top-right-radius:3px;\\n\\t\\t}\\n\\t\\ttable tr {\\n\\t\\t\\t\\ttext-align: center;\\n\\t\\t\\t\\tpadding-left:20px;\\n\\t\\t}\\n\\t\\ttable td:first-child {\\n\\t\\t\\t\\ttext-align: left;\\n\\t\\t\\t\\tpadding-left:20px;\\n\\t\\t\\t\\tborder-left: 0;\\n\\t\\t}\\n\\t\\ttable td {\\n\\t\\t\\t\\tpadding:18px;\\n\\t\\t\\t\\tborder-top: 1px solid #ffffff;\\n\\t\\t\\t\\tborder-bottom:1px solid #e0e0e0;\\n\\t\\t\\t\\tborder-left: 1px solid #e0e0e0;\\n\\n\\t\\t\\t\\tbackground: #fafafa;\\n\\t\\t\\t\\tbackground: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));\\n\\t\\t\\t\\tbackground: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);\\n\\t\\t}\\n\\t\\ttable tr.even td {\\n\\t\\t\\t\\tbackground: #f6f6f6;\\n\\t\\t\\t\\tbackground: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));\\n\\t\\t\\t\\tbackground: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);\\n\\t\\t}\\n\\t\\ttable tr:last-child td {\\n\\t\\t\\t\\tborder-bottom:0;\\n\\t\\t}\\n\\t\\ttable tr:last-child td:first-child {\\n\\t\\t\\t\\t-moz-border-radius-bottomleft:3px;\\n\\t\\t\\t\\t-webkit-border-bottom-left-radius:3px;\\n\\t\\t\\t\\tborder-bottom-left-radius:3px;\\n\\t\\t}\\n\\t\\ttable tr:last-child td:last-child {\\n\\t\\t\\t\\t-moz-border-radius-bottomright:3px;\\n\\t\\t\\t\\t-webkit-border-bottom-right-radius:3px;\\n\\t\\t\\t\\tborder-bottom-right-radius:3px;\\n\\t\\t}\\n\\t\\ttable tr:hover td {\\n\\t\\t\\t\\tbackground: #f2f2f2;\\n\\t\\t\\t\\tbackground: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#f0f0f0));\\n\\t\\t\\t\\tbackground: -moz-linear-gradient(top,  #f2f2f2,  #f0f0f0);\\t\\n\\t\\t}\\n</style>\\n<h3 style="text-align:center;font-size:20px"><span>User : \', escape=False)\nresponse.write(email)\nresponse.write(\'</h3>\\n\\t\\t<table class="gradienttable">\\n\\t\\t\\t\\t<thead>\\n\\t\\t\\t\\t\\t\\t<th>Sentence</th>\\n\\t\\t\\t\\t\\t\\t<th>Word </th>\\n\\t\\t\\t\\t\\t\\t<th>User Given Translation</th>\\n\\t\\t\\t\\t\\t\\t<th>Rule name</th>\\n\\t\\t\\t\\t\\t\\t<th>Part of Speech</th>\\n\\t\\t\\t\\t\\t\\t<th>Relations</th>        \\n\\t\\t\\t\\t\\t\\t<th>Property</th>        \\n\\t\\t\\t\\t</thead>\\n\\t\\t\\t\\t\', escape=False)\nfor i in l:\n    response.write(\'\\n\\t\\t\\t\\t\', escape=False)\n    sen=db(db.sentences.id==i.sid).select(db.sentences.esentence);sen=sen[0].esentence\n    response.write(\'\\n\\t\\t\\t\\t\', escape=False)\n    w=db(db.words.id==i.wid).select(db.words.word);w=w[0].word\n    response.write(\'\\n\\t\\t\\t\\t<tr>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n    response.write(sen)\n    response.write(\'</td>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n    response.write(w)\n    response.write(\'</td>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n    response.write(i.translation)\n    response.write(\'</td>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n    response.write(i.name)\n    response.write(\'</td>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n    response.write(i.typ)\n    response.write(\'</td>\\n\\t\\t\\t\\t\\t\\t\', escape=False)\n    r=db((db.rel_rule.sid==i.sid)&(db.rel_rule.wid==i.wid)).select(db.rel_rule.relation)\n    response.write(\'\\n\\t\\t\\t\\t\\t\\t<td>\\n\\t\\t\\t\\t\\t\\t\\t\\t\', escape=False)\n    for j in r:\n        response.write(\'\\n\\t\\t\\t\\t\\t\\t\\t\\t\', escape=False)\n        if j.relation:\n            response.write(\'\\n\\t\\t\\t\\t\\t\\t\\t\\t<li>\', escape=False)\n            response.write(j.relation)\n            response.write(\'</li>\\n\\t\\t\\t\\t\\t\\t\\t\\t\', escape=False)\n        else:\n            response.write(\'\\n\\t\\t\\t\\t\\t\\t\\t\\tNone\\n\\t\\t\\t\\t\\t\\t\\t\\t\', escape=False)\n            pass\n        response.write(\'\\n\\t\\t\\t\\t\\t\\t</td>\\n\\t\\t\\t\\t\\t\\t<td>\', escape=False)\n        response.write(i.property)\n        response.write(\'</td>\\n\\t\\t\\t\\t</tr>\\n\\t\\t\\t\\t\', escape=False)\n        pass\n    response.write(\'\\n\\t\\t</table>\\n\', escape=False)\n    response.write(\'\\n     <br />\\n     <br />\\n     <br />\\n     <br />\\n     <br />\\n     <br />\\n     <br />\\n     <br />\\n    </div>\\n    <!-- end content -->\\n    <!-- start sidebar -->\\n<!--    <div id="sidebar">\\n     <ul>\\n      <li id="categories">\\n       <h2>\\n        Categories\\n       </h2>\\n       <ul>\\n        <li>\\n         <a href="#">\\n          Lorem Ipsum\\n         </a>\\n         (1)\\n        </li>\\n        <li>\\n         <a href="#">\\n          Uncategorized\\n         </a>\\n         (4)\\n        </li>\\n        <li>\\n         <a href="#">\\n          Nulla luctus eleifend\\n         </a>\\n         (1)\\n        </li>\\n        <li>\\n         <a href="#">\\n          Pellentesque tempus\\n         </a>\\n         (4)\\n        </li>\\n        <li>\\n         <a href="#">\\n          Donec dictum metus\\n         </a>\\n         (1)\\n        </li>\\n        <li>\\n         <a href="#">\\n          Etiam posuere augue\\n         </a>\\n         (4)\\n        </li>\\n       </ul>\\n      </li>\\n      <li id="calendar">\\n       <h2>\\n        Calendar\\n       </h2>\\n       <div id="calendar_wrap">\\n        <table id="wp-calendar" summary="Calendar">\\n         <caption>\\n          September 2008\\n         </caption>\\n         <thead>\\n          <tr>\\n           <th abbr="Monday" scope="col" title="Monday">\\n            M\\n           </th>\\n           <th abbr="Tuesday" scope="col" title="Tuesday">\\n            T\\n           </th>\\n           <th abbr="Wednesday" scope="col" title="Wednesday">\\n            W\\n           </th>\\n           <th abbr="Thursday" scope="col" title="Thursday">\\n            T\\n           </th>\\n           <th abbr="Friday" scope="col" title="Friday">\\n            F\\n           </th>\\n           <th abbr="Saturday" scope="col" title="Saturday">\\n            S\\n           </th>\\n           <th abbr="Sunday" scope="col" title="Sunday">\\n            S\\n           </th>\\n          </tr>\\n         </thead>\\n         <tfoot>\\n          <tr>\\n           <td abbr="July" colspan="3" id="prev">\\n            <a href="#">\\n             &laquo; Jul\\n            </a>\\n           </td>\\n           <td class="pad">\\n            &nbsp;\\n           </td>\\n           <td abbr="September" colspan="3" id="next" class="pad">\\n            <a href="#">\\n             Sep &raquo;\\n            </a>\\n           </td>\\n          </tr>\\n         </tfoot>\\n         <tbody>\\n          <tr>\\n           <td colspan="2" class="pad">\\n            &nbsp;\\n           </td>\\n           <td>\\n            1\\n           </td>\\n           <td>\\n            2\\n           </td>\\n           <td>\\n            3\\n           </td>\\n           <td>\\n            4\\n           </td>\\n           <td>\\n            5\\n           </td>\\n          </tr>\\n          <tr>\\n           <td>\\n            6\\n           </td>\\n           <td>\\n            7\\n           </td>\\n           <td>\\n            8\\n           </td>\\n           <td>\\n            9\\n           </td>\\n           <td>\\n            10\\n           </td>\\n           <td>\\n            11\\n           </td>\\n           <td>\\n            12\\n           </td>\\n          </tr>\\n          <tr>\\n           <td>\\n            13\\n           </td>\\n           <td>\\n            14\\n           </td>\\n           <td>\\n            15\\n           </td>\\n           <td>\\n            16\\n           </td>\\n           <td>\\n            17\\n           </td>\\n           <td>\\n            18\\n           </td>\\n           <td>\\n            19\\n           </td>\\n          </tr>\\n          <tr>\\n           <td>\\n            20\\n           </td>\\n           <td id="today">\\n            21\\n           </td>\\n           <td>\\n            22\\n           </td>\\n           <td>\\n            23\\n           </td>\\n           <td>\\n            24\\n           </td>\\n           <td>\\n            25\\n           </td>\\n           <td>\\n            26\\n           </td>\\n          </tr>\\n          <tr>\\n           <td>\\n            27\\n           </td>\\n           <td>\\n            28\\n           </td>\\n           <td>\\n            29\\n           </td>\\n           <td>\\n            30\\n           </td>\\n           <td>\\n            31\\n           </td>\\n           <td class="pad" colspan="2">\\n            &nbsp;\\n           </td>\\n          </tr>\\n         </tbody>\\n        </table>\\n       </div>\\n      </li>\\n      <li>\\n       <h2>\\n        Lorem Ipsum Dolor\\n       </h2>\\n       <ul>\\n        <li>\\n         <a href="#">\\n          Nulla luctus eleifend purus\\n         </a>\\n        </li>\\n        <li>\\n         <a href="#">\\n          Praesent scelerisque scelerisque erat\\n         </a>\\n        </li>\\n        <li>\\n         <a href="#">\\n          Ut nonummy rutrum sem\\n         </a>\\n        </li>\\n        <li>\\n         <a href="#">\\n          Pellentesque tempus quam quis nulla\\n         </a>\\n        </li>\\n        <li>\\n         <a href="#">\\n          Fusce ultrices fringilla metus\\n         </a>\\n        </li>\\n        <li>\\n         <a href="#">\\n          Praesent mattis condimentum nisl\\n         </a>\\n        </li>\\n       </ul>\\n      </li>\\n     </ul>\\n    </div>-->\\n    <!-- end sidebar -->\\n    <br style="clear: both;" />\\n   </div>\\n  </div>\\n  <!-- end page -->\\n  <!-- start footer -->\\n  <div id="wrapper2">\\n    \\n\\n   <div id="footer">\\n<!--\\n    <ul>\\n     <li class="first">\\n      <h2>\\n       Mauris vulputate dolor\\n      </h2>\\n      <ul>\\n       <li>\\n        <a href="#">\\n         Nulla luctus eleifend purus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent scelerisque scelerisque erat\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Ut nonummy rutrum sem\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Pellentesque tempus quam quis nulla\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Fusce ultrices fringilla metus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent mattis condimentum nisl\\n        </a>\\n       </li>\\n      </ul>\\n     </li>\\n     <li>\\n      <h2>\\n       Praesent scelerisque sceler\\n      </h2>\\n      <ul>\\n       <li>\\n        <a href="#">\\n         Nulla luctus eleifend purus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent scelerisque scelerisque erat\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Ut nonummy rutrum sem\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Pellentesque tempus quam quis nulla\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Fusce ultrices fringilla metus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent mattis condimentum nisl\\n        </a>\\n       </li>\\n      </ul>\\n     </li>\\n     <li>\\n      <h2>\\n       Fusce ultrices fringilla\\n      </h2>\\n      <ul>\\n       <li>\\n        <a href="#">\\n         Nulla luctus eleifend purus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent scelerisque scelerisque erat\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Ut nonummy rutrum sem\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Pellentesque tempus quam quis nulla\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Fusce ultrices fringilla metus\\n        </a>\\n       </li>\\n       <li>\\n        <a href="#">\\n         Praesent mattis condimentum nisl\\n        </a>\\n       </li>\\n      </ul>\\n     </li>\\n    </ul>\\n    -->\\n   </div>\\n   \\n   <p id="legal">\\n     &bull;&nbsp;&nbsp;\\n    &copy;2013 All Rights Reserved\\n\\t\\t&nbsp;&nbsp;&bull;&nbsp;&nbsp;\\n\\t\\tDesign by :\\n    Abhinav Pandey, Ankit Kotak, Nazrul Haque Athar, Anubhav Srivastava, Jayanth Katuri\\n    &nbsp;&nbsp;&bull;&nbsp;&nbsp;\\n    <!--\\n\\t\\tIcons by\\n    <a href="http://famfamfam.com/">\\n     FAMFAMFAM\\n    </a>\\n    .\\n    <a href="http://validator.w3.org/check/referer" class="xhtml" title="This page validates as XHTML">\\n     Valid\\n     <abbr title="eXtensible HyperText Markup Language">\\n      XHTML\\n     </abbr>\\n    </a>\\n    &nbsp;&nbsp;&bull;&nbsp;&nbsp;\\n    <a href="http://jigsaw.w3.org/css-validator/check/referer" class="css" title="This page validates as CSS">\\n     Valid\\n     <abbr title="Cascading Style Sheets">\\n      CSS\\n     </abbr>\\n    </a>-->\\n   </p>\\n  </div>\\n  <!-- end footer -->\\n </body>\\n</html>\\n\', escape=False)'
+p7
+sS'snapshot'
+p8
+(dp9
+S'exception'
+p10
+(dp11
+S'__module__'
+p12
+S"'gluon.rocket'"
+p13
+sS'__getslice__'
+p14
+S"<method-wrapper '__getslice__' of SocketTimeout object>"
+p15
+sS'__str__'
+p16
+S"<method-wrapper '__str__' of SocketTimeout object>"
+p17
+sS'__reduce__'
+p18
+S'<built-in method __reduce__ of SocketTimeout object>'
+p19
+sS'__dict__'
+p20
+S'{}'
+p21
+sS'__sizeof__'
+p22
+S'<built-in method __sizeof__ of SocketTimeout object>'
+p23
+sS'__weakref__'
+p24
+S'None'
+p25
+sS'__init__'
+p26
+S"<method-wrapper '__init__' of SocketTimeout object>"
+p27
+sS'__setattr__'
+p28
+S"<method-wrapper '__setattr__' of SocketTimeout object>"
+p29
+sS'__reduce_ex__'
+p30
+S'<built-in method __reduce_ex__ of SocketTimeout object>'
+p31
+sS'__new__'
+p32
+S'<built-in method __new__ of type object>'
+p33
+sS'__format__'
+p34
+S'<built-in method __format__ of SocketTimeout object>'
+p35
+sS'__class__'
+p36
+S"<class 'gluon.rocket.SocketTimeout'>"
+p37
+sS'__doc__'
+p38
+S"'Exception for when a socket times out between requests.'"
+p39
+sS'__getitem__'
+p40
+S"<method-wrapper '__getitem__' of SocketTimeout object>"
+p41
+sS'__setstate__'
+p42
+S'<built-in method __setstate__ of SocketTimeout object>'
+p43
+sS'__getattribute__'
+p44
+S"<method-wrapper '__getattribute__' of SocketTimeout object>"
+p45
+sS'args'
+p46
+S"('Socket timed out before request.',)"
+p47
+sS'__subclasshook__'
+p48
+S'<built-in method __subclasshook__ of type object>'
+p49
+sS'__unicode__'
+p50
+S'<built-in method __unicode__ of SocketTimeout object>'
+p51
+sS'__delattr__'
+p52
+S"<method-wrapper '__delattr__' of SocketTimeout object>"
+p53
+sS'__repr__'
+p54
+S"<method-wrapper '__repr__' of SocketTimeout object>"
+p55
+sS'__hash__'
+p56
+S"<method-wrapper '__hash__' of SocketTimeout object>"
+p57
+ssS'evalue'
+p58
+S'Socket timed out before request.'
+p59
+sS'frames'
+p60
+(lp61
+(dp62
+S'file'
+p63
+S'/home/nazrul/web2py/gluon/rocket.py'
+p64
+sS'dump'
+p65
+(dp66
+S'self'
+p67
+S'<WSGIWorker(Thread-2, started daemon -1267729600)>'
+p68
+sS'conn'
+p69
+S'<gluon.rocket.Connection object>'
+p70
+sS'self.run_app'
+p71
+S'<bound method WSGIWorker.run_app of <WSGIWorker(Thread-2, started daemon -1267729600)>>'
+p72
+ssS'lnum'
+p73
+I1337
+sS'lines'
+p74
+(dp75
+I1332
+S'            # Enter connection serve loop'
+p76
+sI1333
+S'            while True:'
+p77
+sI1334
+S'                if __debug__:'
+p78
+sI1335
+S"                    self.err_log.debug('Serving a request')"
+p79
+sI1336
+S'                try:'
+p80
+sI1337
+S'                    self.run_app(conn)'
+p81
+sI1338
+S'                except:'
+p82
+sI1339
+S'                    exc = sys.exc_info()'
+p83
+sI1340
+S'                    handled = self._handleError(*exc)'
+p84
+sI1341
+S'                    if handled:'
+p85
+ssS'call'
+p86
+S'(self=<WSGIWorker(Thread-2, started daemon -1267729600)>)'
+p87
+sS'func'
+p88
+S'run'
+p89
+sa(dp90
+g63
+S'/home/nazrul/web2py/gluon/rocket.py'
+p91
+sg65
+(dp92
+S'self'
+p93
+S'<WSGIWorker(Thread-2, started daemon -1267729600)>'
+p94
+sS'self.environ'
+p95
+S"{'HTTP_ACCEPT': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8', 'HTTP_ACCEPT_ENCODING': 'gzip, deflate', 'HTTP_ACCEPT_LANGUAGE': 'en-US,en;q=0.5', 'HTTP_CACHE_CONTROL': 'max-age=0', 'HTTP_CONNECTION': 'keep-alive', 'HTTP_COOKIE': 'KBD=0hi-0; session_id_welcome=127.0.0.1-4ab9dacb...ws=127.0.0.1-4eea093e-3431-4797-bd7a-1e49bcb534a8', 'HTTP_HOST': '127.0.0.1:8000', 'HTTP_USER_AGENT': 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:18.0) Gecko/20100101 Firefox/18.0', 'PATH_INFO': '/WSD/default/disp_adv', 'QUERY_STRING': 'uid=4', ...}"
+p96
+sS'sock_file'
+p97
+S'<socket._fileobject object>'
+p98
+sS'environ'
+p99
+S'undefined'
+p100
+sS'self.build_environ'
+p101
+S'<bound method WSGIWorker.build_environ of <WSGIWorker(Thread-2, started daemon -1267729600)>>'
+p102
+sS'conn'
+p103
+S'<gluon.rocket.Connection object>'
+p104
+ssg73
+I1830
+sg74
+(dp105
+I1825
+S'        else:'
+p106
+sI1826
+S'            sock_file = conn.makefile(BUF_SIZE)'
+p107
+sI1827
+S''
+sI1828
+S'        try:'
+p108
+sI1829
+S'            # Read the headers and build our WSGI environment'
+p109
+sI1830
+S'            self.environ = environ = self.build_environ(sock_file, conn)'
+p110
+sI1831
+S''
+sI1832
+S'            # Handle 100 Continue'
+p111
+sI1833
+S"            if environ.get('HTTP_EXPECT', '') == '100-continue':"
+p112
+sI1834
+S"                res = environ['SERVER_PROTOCOL'] + ' 100 Continue\\r\\n\\r\\n'"
+p113
+ssg86
+S'(self=<WSGIWorker(Thread-2, started daemon -1267729600)>, conn=<gluon.rocket.Connection object>)'
+p114
+sg88
+S'run_app'
+p115
+sa(dp116
+g63
+S'/home/nazrul/web2py/gluon/rocket.py'
+p117
+sg65
+(dp118
+S'sock_file'
+p119
+S'<socket._fileobject object>'
+p120
+sS'self.read_request_line'
+p121
+S'<bound method WSGIWorker.read_request_line of <WSGIWorker(Thread-2, started daemon -1267729600)>>'
+p122
+sS'self'
+p123
+S'<WSGIWorker(Thread-2, started daemon -1267729600)>'
+p124
+sS'request'
+p125
+g100
+ssg73
+I1650
+sg74
+(dp126
+I1645
+S'                                      "wsgiorg.futures": executor.futures})'
+p127
+sI1646
+S''
+sI1647
+S'    def build_environ(self, sock_file, conn):'
+p128
+sI1648
+S'        """ Build the execution environment. """'
+p129
+sI1649
+S'        # Grab the request line'
+p130
+sI1650
+S'        request = self.read_request_line(sock_file)'
+p131
+sI1651
+S''
+sI1652
+S'        # Copy the Base Environment'
+p132
+sI1653
+S'        environ = self.base_environ.copy()'
+p133
+sI1654
+S''
+ssg86
+S'(self=<WSGIWorker(Thread-2, started daemon -1267729600)>, sock_file=<socket._fileobject object>, conn=<gluon.rocket.Connection object>)'
+p134
+sg88
+S'build_environ'
+p135
+sa(dp136
+g63
+S'/home/nazrul/web2py/gluon/rocket.py'
+p137
+sg65
+(dp138
+S'global SocketTimeout'
+p139
+S"<class 'gluon.rocket.SocketTimeout'>"
+p140
+ssg73
+I1401
+sg74
+(dp141
+I1396
+S''
+sI1397
+S'                d = sock_file.readline()'
+p142
+sI1398
+S'                if PY3K:'
+p143
+sI1399
+S"                    d = d.decode('ISO-8859-1')"
+p144
+sI1400
+S'        except socket.timeout:'
+p145
+sI1401
+S"            raise SocketTimeout('Socket timed out before request.')"
+p146
+sI1402
+S'        except TypeError:'
+p147
+sI1403
+S'            raise SocketClosed('
+p148
+sI1404
+S"                'SSL bug caused closure of socket.  See '"
+p149
+sI1405
+S'                \'"https://groups.google.com/d/topic/web2py/P_Gw0JxWzCs".\')'
+p150
+ssg86
+S'(self=<WSGIWorker(Thread-2, started daemon -1267729600)>, sock_file=<socket._fileobject object>)'
+p151
+sg88
+S'read_request_line'
+p152
+sasS'pyver'
+p153
+S'Python 2.7.3: /usr/bin/python'
+p154
+sS'etype'
+p155
+S"<class 'gluon.rocket.SocketTimeout'>"
+p156
+sS'date'
+p157
+S'Tue Nov 19 12:07:12 2013'
+p158
+sS'locals'
+p159
+(dp160
+S'sock_file'
+p161
+S'<socket._fileobject object>'
+p162
+sS'self'
+p163
+S'<WSGIWorker(Thread-2, started daemon -1267729600)>'
+p164
+sssS'traceback'
+p165
+S'Traceback (most recent call last):\n  File "/home/nazrul/web2py/gluon/rocket.py", line 1337, in run\n    self.run_app(conn)\n  File "/home/nazrul/web2py/gluon/rocket.py", line 1830, in run_app\n    self.environ = environ = self.build_environ(sock_file, conn)\n  File "/home/nazrul/web2py/gluon/rocket.py", line 1650, in build_environ\n    request = self.read_request_line(sock_file)\n  File "/home/nazrul/web2py/gluon/rocket.py", line 1401, in read_request_line\n    raise SocketTimeout(\'Socket timed out before request.\')\nSocketTimeout: Socket timed out before request.\n'
+p166
+s.

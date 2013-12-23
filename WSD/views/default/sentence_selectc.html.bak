@@ -1,0 +1,111 @@
+{{right_sidebar_enabled = True}}
+{{extend 'layout.html'}}
+<style>
+
+    .myButton {
+        
+        -moz-box-shadow:inset 0px 0px 15px 3px #23395e;
+        -webkit-box-shadow:inset 0px 0px 15px 3px #23395e;
+        box-shadow:inset 0px 0px 15px 3px #23395e;
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2e466e), color-stop(1, #415989));
+        background:-moz-linear-gradient(top, #2e466e 5%, #415989 100%);
+        background:-webkit-linear-gradient(top, #2e466e 5%, #415989 100%);
+        background:-o-linear-gradient(top, #2e466e 5%, #415989 100%);
+        background:-ms-linear-gradient(top, #2e466e 5%, #415989 100%);
+        background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2e466e', endColorstr='#415989',GradientType=0);
+        
+        background-color:#2e466e;
+        
+        -moz-border-radius:17px;
+        -webkit-border-radius:17px;
+        border-radius:17px;
+        
+        border:1px solid #1f2f47;
+        
+        display:inline-block;
+        color:#ffffff;
+        font-family:arial;
+        font-size:15px;
+        font-weight:normal;
+        padding:6px 13px;
+        text-decoration:none;
+        
+        text-shadow:0px 1px 0px #263666;
+        
+    }
+    .myButton:hover {
+        
+        background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #415989), color-stop(1, #2e466e));
+        background:-moz-linear-gradient(top, #415989 5%, #2e466e 100%);
+        background:-webkit-linear-gradient(top, #415989 5%, #2e466e 100%);
+        background:-o-linear-gradient(top, #415989 5%, #2e466e 100%);
+        background:-ms-linear-gradient(top, #415989 5%, #2e466e 100%);
+        background:linear-gradient(to bottom, #415989 5%, #2e466e 100%);
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#415989', endColorstr='#2e466e',GradientType=0);
+        
+        background-color:#415989;
+    }
+    .myButton:active {
+        position:relative;
+        top:1px;
+    }
+    #side{position:absolute;right:0px;top:0px;background-color:#FAF9EA;min-height:310px;width:300px}
+    #side_word{position:absolute;top:30px;left:50px;}
+</style>
+
+<script>
+  var dis=false;
+  function function1()
+  {
+  if(dis==false)
+  {
+  document.getElementById("help").style.display="block";
+  dis=true;
+  }
+  else
+  {
+  document.getElementById("help").style.display="None";
+  dis=false;
+  }
+  }    
+</script>
+
+
+<br/><br/><br/>
+<div  style="font-weight:bold;font-size:15px">Selected Word: &nbsp;&nbsp;<input type='text' value="{{=w}}"><br></div>
+{{s = []}}
+{{r = db(db.links.wid==int(d)).select(db.links.sid)}}
+{{for i in r:}}
+{{ x =db(db.sentences.id==i.sid).select() }}
+{{for j in x:}}
+{{if j.hsentence and int(level_set)==int(j.level):}}
+{{s.append(j.esentence)}}
+{{pass}}
+{{pass}}
+{{pass}}
+<br>
+{{if s:}}
+<form method="POST">
+    <div  style="font-weight:bold;font-size:15px" >Select Sentence: &nbsp;&nbsp;
+<select name="sentence">
+{{for i in s:}}
+<option value="{{=i}}">{{=i}}</option>
+{{pass}}
+        </select><br></div>
+<br><br>
+
+    <input class="myButton" style="font-weight:bold;position:relative;left:250px;top:0px" type="submit" name="submit" value="next"><br><br>
+{{else:}}
+{{redirect('word_select')}}
+{{pass}}
+
+<div id='side'>
+{{block right_sidebar}}
+    <p style="font-weight:bold; font-size:15px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Confused?&nbsp;&nbsp;&nbsp;<input  class="myButton" type="button" onclick="function1();" name="help" value="Click Here!"></p> 
+<span id="help" style="display:None;">
+    <p><b>Click "generate" button to get a random word. It will give you a random word from the database. The level can to selected to get the sentences of that level. The level of a sentence has been decided by various parameters on how the translation of the word will be affected by the other words present in the sentence.</b></p>
+</span>
+{{end}}
+    </div>

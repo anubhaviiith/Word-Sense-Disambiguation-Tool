@@ -1,0 +1,391 @@
+<html><head><!-- meta ignored --><meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+</head><body>
+
+<table style="page-break-before: always;" border="1" cellpadding="1" cellspacing="1"><thead><tr valign="bottom"></tr></thead><tbody><tr><td> Paninian relation</td> 
+	<td> Example</td> 
+	<td> Comment</td> 
+	<td> Conditions</td> 
+	<td> SD relations </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> _</td> 
+	<td> _</td> 
+	<td> Right hand side (RHS) and left hand side (LHS) of a relation name 
+are separated with a "-" (hyphen) symbol and all the words joined with 
+an "_" (underscore) should be treated as one word or only LHS/RHS of 
+that relation</td> 
+	<td> If there is not a direct mapping from SD relation to Paninian 
+relation then only comments are given in this column in "if then" 
+statements.</td> 
+	<td> - </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">subject</font></td> 
+	<td> The <font color="#0000FF">dog</font> <font color="FF0000"> chases </font>the cat . </td> 
+	<td> aBihiwa-kAraka  (except dummy subject 'there') is "SUBJECT" 
+acoording to Paninian grammar. Ex. "Ram reads" ('rAmaH paTawi',  here 
+karwA is being aBihiwa (said) by Sap [the wif(wip)] and that is the 
+SUBJECT. "Ravan was killed by Ram" (rAmeNa rAvaNaH ahanyawa) here karma 
+is being aBihiwa by yak [the wif (wa)] and that is the SUBJECT in 
+English sentence. So according to Paninian theory subject is similar to 
+aBihiwa. </td> 
+	<td> <img></td> 
+	<td> nsubj etc.
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">dummy_subject</font></td> 
+	<td> <font color="#0000FF">There</font> <font color="FF0000"> are </font>flowers in the garden . </td> 
+	<td> -</td> 
+	<td> Direct mapping</td> 
+	<td> expl
+</td> </tr><tr><td> 
+</td> </tr><tr><td> kriyA-raised_subject</td> 
+	<td> ***</td> 
+	<td> -</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">anaBihiwa_subject</font></td> 
+	<td> I want <font color="#0000FF">him</font> to <font color="FF0000"> go </font>. </td> 
+	<td> This relation connects verbs with nouns or pronouns whose case is 
+marked with some other verb to which they become an object and at the 
+same time they act as a karWA/agent/doer of the other verb. In our 
+example, 'him' is assigned accusative case by the verb 'want' and it 
+acts as a karWA of the verb 'go'. Stanford parser gives "nsubj" relation
+ between 'go' and 'him' but in such sentences the subject 'him' in this 
+example, is not aBihiwa by the kriyA 'go', hence we have given it the 
+name 'anaBihiwa_subject'.</td> 
+	<td> <img></td> 
+	<td> nsubj + aux + the word to
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">prayojya_karwA</font></td> 
+	<td> Kaikeyi made <font color="#0000FF">Rama</font> <font color="FF0000"> do </font>his job . </td> 
+	<td> The object of the first verb (i.e. causative verb) becomes 
+prayojya_karwA according to Sanskrit grammar, so we have given this 
+object a prayojya_karwA relation but we are also showing the 
+prayojya_karwA as an object of the causative verb. e.g. "Kaikeyi made 
+RAMA DO his job." here 'RAMA' is prayojya_karwA and is the object of the
+ verb 'made'.</td> 
+	<td> <img></td> 
+	<td> ccomp + nsubj + causative verb
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">aBihiwa</font></td> 
+	<td> There <font color="FF0000"> are </font><font color="#0000FF">flowers</font> in the garden . </td> 
+	<td> The pradicate in this example (flowers) is the subject 
+(aBihiwa_karwA) of the verb. The verb has gender, number and person 
+agreement with it, that is why we also named it kriyA-GNP_agr_subject . 
+(GNP_agr = Gender Number person agreement) but later changed it to 
+kriyA-aBihiwa </td> 
+	<td> <img></td> 
+	<td> expl + nsubj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">object</font></td> 
+	<td> The dog <font color="FF0000"> chases </font>the <font color="#0000FF">cat</font> . </td> 
+	<td> If there is only one object in a sentence than that object is labeled as object.</td> 
+	<td> Direct mapping</td> 
+	<td> dobj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">object_1</font></td> 
+	<td> Hari <font color="FF0000"> gave </font><font color="#0000FF">Mohan</font> a book . </td> 
+	<td> If there are two objects of a verb in a sentence than the 
+first/indirect object is labeled as object_1 which is basically 
+sampraxAna kAraka in Paninian theory.</td> 
+	<td> Direct mapping</td> 
+	<td> iobj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">object_2</font></td> 
+	<td> Hari <font color="FF0000"> gave </font>Mohan a <font color="#0000FF">book</font> . </td> 
+	<td> If there are two objects in a sentence than the second object (direct object) is labeled as object_2.</td> 
+	<td> <img></td> 
+	<td> dobj + iobj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kriyA_viSeRaNa</font></td> 
+	<td> He <font color="FF0000"> runs </font><font color="#0000FF">quickly</font> . </td> 
+	<td> In English, 'advmod' relation is marked for any type of adverbial 
+modifiers but in our scheme only manner adverbs are labeled as 
+kriyA_viSeRaNa.</td> 
+	<td> <img></td> 
+	<td> advmod + POS info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kAlavAcI</font></td> 
+	<td> I'm <font color="FF0000"> going </font>to Delhi next <font color="#0000FF">month</font> . </td> 
+	<td> If the time expressions do not take any preposition this relation is used.</td> 
+	<td> Direct mapping</td> 
+	<td> tmod
+</td> </tr><tr><td> 
+</td> </tr><tr><td> kriyA-measurement</td> 
+	<td> ***</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> kriyA-praSnavAcI</td> 
+	<td> ***</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">conjunction</font></td> 
+	<td> He says <font color="#0000FF">that</font> you <font color="FF0000"> like </font>to swim . </td> 
+	<td> -</td> 
+	<td> <img></td> 
+	<td> mark or mark + nsubj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">aXikaraNavAcI_avyaya</font></td> 
+	<td> He <font color="FF0000"> is </font><font color="#0000FF">here</font> . </td> 
+	<td> This relation connects verbs with the words which have 
+prepositional meaning in them but the preposition is not explicit (which
+ means that the object has a non-overt preposition in it).</td> 
+	<td> <img></td> 
+	<td> advmod + word info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">preposition_sambanXI</font></td> 
+	<td> The dog <font color="FF0000"> ran </font>in the <font color="#0000FF">yard</font> . </td> 
+	<td> This relation is bahuvrIhi-samAsa type relation or a 
+meta-relation. This connects a verb with a noun through prepositions. 
+The actual relation generated by the system will be: (kriyA-in_sambanXI 
+ ran yard).</td> 
+	<td> <img></td> 
+	<td> prep + nsubjpass|csubjpass or prep + pobj|pcomp + POS info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kriyA_niReXaka</font></td> 
+	<td> He is <font color="#0000FF">not</font> <font color="FF0000"> coming </font>. </td> 
+	<td> Connects 'not' with verb. </td> 
+	<td> <img></td> 
+	<td> neg or neg + cop
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">upasarga</font></td> 
+	<td> He <font color="FF0000"> stood </font><font color="#0000FF">up</font> and walked out . </td> 
+	<td> Connects verbs with its particle.</td> 
+	<td> Direct mapping</td> 
+	<td> prt
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kqxanwa_karma</font></td> 
+	<td> I <font color="FF0000"> want </font>to <font color="#0000FF">go</font> . </td> 
+	<td> Connects verbs with infinitive verb object.</td> 
+	<td> <img></td> 
+	<td> xcomp or xcomp + cop
+</td> </tr><tr><td> 
+</td> </tr><tr><td> kriyA-kqxanwa_viSeRaNa</td> 
+	<td> ***</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kqxanwa_kriyA_viSeRaNa</font></td> 
+	<td> He <font color="FF0000"> walked </font>out of the room, <font color="#0000FF">glaring</font> coldly at Sarah . </td> 
+	<td> This relation is also just to connect all words together in a sentence. More examples: I SAW her SITTING in the garden.***</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kriyArWa_kriyA</font></td> 
+	<td> I had to <font color="FF0000"> run </font>fast to <font color="#0000FF">catch</font> the bus . </td> 
+	<td> Connects infinitival verbs to verbs when they mean "in order to". </td> 
+	<td> Direct mapping</td> 
+	<td> purpcl
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">vAkya_subject</font></td> 
+	<td> What she <font color="#0000FF">said</font> <font color="FF0000"> makes </font>sense . </td> 
+	<td> This relation connects clausal syntactic subject of a clause (which means that the subject is itself a clause) to a verb.</td> 
+	<td> <img></td> 
+	<td> csubj/csubjpass or cop + csubj/csubjpass
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">vAkyakarma</font></td> 
+	<td> He <font color="FF0000"> says </font>that you <font color="#0000FF">like</font> to swim . </td> 
+	<td> Here we show the relation of main verb with the verb of the 
+embedded clause because that is the head of the entire embedded clause. 
+the embedded clause becomes object of the main verb.</td> 
+	<td> ***- </td> 
+	<td> csubj
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">preraka_kriyA</font></td> 
+	<td> Kaikeyi <font color="#0000FF">made</font> Rama <font color="FF0000"> do </font>his job . </td> 
+	<td> In English, causative verbs (make, have, get etc.) loose their own
+ meaning and add an extra meaning "to convince to do something" or "to 
+trick someone into doing something" to the other verbs, but in Hindi and
+ other Indian languages causativisation is marked through suffixes, 
+hence we combine the causative verbs with the main verb and mark the 
+causative verbs as preraka_kriyAs.</td> 
+	<td> <img></td> 
+	<td> ccomp + causative verb
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">kriyA_mUla</font></td> 
+	<td> <font color="FF0000"> Keep </font><font color="#0000FF">quite</font> , she said. </td> 
+	<td> This relation connects imparative verb to their predicate which 
+becomes kriyA_mUla of the imparative verb and the imparative verb 
+becomes kriyA. Though, technically, kriyA is the head in this relation 
+but semantically kriyA_mUla is the head.</td> 
+	<td> -*** </td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> pUrvakAlika_kriyA</font>-<font color="#0000FF">ananwarakAlika_kriyA</font></td> 
+	<td> The man I <font color="FF0000"> saw </font>after I <font color="#0000FF">left</font> your party is here . </td> 
+	<td> pUrvakAlika_kriyA will preceed in time and ananwarakAlika_kriyA happens after that.</td> 
+	<td> ***- </td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kriyA</font>-<font color="#0000FF">samAnakAlika_kriyA</font></td> 
+	<td> Rama was <font color="FF0000"> talking </font>while <font color="#0000FF">eating</font> fruits . </td> 
+	<td> Connects two verbs which take place at same time. </td> 
+	<td> ***- </td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">viSeRaNa</font></td> 
+	<td> The <font color="#0000FF">big</font> <font color="FF0000"> dog </font>chased me . </td> 
+	<td> Here viSeRya = modified and viSeRaNa = modifier. </td> 
+	<td> Direct mapping</td> 
+	<td> amod
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">det_viSeRaNa</font></td> 
+	<td> <font color="#0000FF">The</font> <font color="FF0000"> dog </font>chased a cat . </td> 
+	<td> -</td> 
+	<td> <img></td> 
+	<td> det or predet
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">saMKyA_viSeRaNa</font></td> 
+	<td> I saw him <font color="#0000FF">three</font> <font color="FF0000"> days </font>ago . </td> 
+	<td> -</td> 
+	<td> <img></td> 
+	<td> num
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRaNa</font>-<font color="#0000FF">viSeRaka</font></td> 
+	<td> She is a <font color="#0000FF">very</font> <font color="FF0000"> good </font>player . </td> 
+	<td> -</td> 
+	<td> -??? </td> 
+	<td> advmod
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> object</font>-<font color="#0000FF">object_samAnAXikaraNa</font></td> 
+	<td> I made <font color="FF0000"> him </font><font color="#0000FF">happy</font> . </td> 
+	<td> This connects object with objectival complement. </td> 
+	<td> <img></td> 
+	<td> nsubj + xcomp + POS info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> subject</font>-<font color="#0000FF">subject_samAnAXikaraNa</font></td> 
+	<td> <font color="FF0000"> She </font>is a <font color="#0000FF">doctor</font> . </td> 
+	<td> -</td> 
+	<td> <img></td> 
+	<td> acomp+nsubj etc.
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">preposition_saMbanXI</font></td> 
+	<td> The <font color="FF0000"> salaries </font>of the <font color="#0000FF">programmers</font> are excellent . </td> 
+	<td> This connects nouns with nouns which are connected via some 
+preposition. In this relation name, preposition) word will be replaced 
+with the actual preposition which connects nouns. The actual relation 
+generated by the system will be: (viSeRya-of_saMbanXI  salaries 
+programmers)</td> 
+	<td> <img></td> 
+	<td> prep + pobj|pcomp + POS info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> jiwanA</font>-<font color="#0000FF">wulanAwmaka_viSeRaNa</font></td> 
+	<td> <font color="#0000FF">The</font> <font color="FF0000"> faster </font>it is, the more they will like it . </td> 
+	<td> This relation can be used for WSD purpose. </td> 
+	<td> <img></td> 
+	<td> dep + det + POS and word sequence info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> uwanA</font>-<font color="#0000FF">wulanAwmaka_viSeRaNa</font></td> 
+	<td> The faster it is, <font color="#0000FF">the</font> <font color="FF0000"> more </font>they will like it . </td> 
+	<td> This relation can also be used for WSD purpose. </td> 
+	<td> <img></td> 
+	<td> dep + det + POS and word sequence info
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">kqxanwa_viSeRaNa</font></td> 
+	<td> The <font color="FF0000"> boy </font><font color="#0000FF">running</font> in the garden plucked the flower . </td> 
+	<td> Connects noun with its participle modifier. </td> 
+	<td> <img></td> 
+	<td> partmod
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> to</font>-<font color="#0000FF">infinitive</font></td> 
+	<td> I want <font color="FF0000"> to </font><font color="#0000FF">read</font> a book . </td> 
+	<td> Connects 'to' with its complement verb.</td> 
+	<td> <img></td> 
+	<td> aux + cop + the word 'to' or aux + the word 'to'
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> saMKyA</font>-<font color="#0000FF">idiom</font></td> 
+	<td> He lives <font color="FF0000"> two </font><font color="#0000FF">thirds</font> of a mile from here . </td> 
+	<td> This relation connects idiomatic number expressions together. ***</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> saMKyA</font>-<font color="#0000FF">saMKyA</font></td> 
+	<td> <font color="FF0000"> Four </font><font color="#0000FF">hundred</font> people live here . </td> 
+	<td> Connects one number with the follownig number. </td> 
+	<td> Direct mapping</td> 
+	<td> number
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> more_upameya</font>-<font color="#0000FF">than_upamAna</font></td> 
+	<td> We do this more for <font color="FF0000"> pleasure </font>than for money . </td> 
+	<td> This and the next relation "less_upameya-than_upamAna" connect two nouns in comparative constructions. </td> 
+	<td> <img></td> 
+	<td> prep + the word than
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> less_upameya</font>-<font color="#0000FF">than_upamAna</font></td> 
+	<td> Sara eats less <font color="FF0000"> food </font>than <font color="#0000FF">fruits</font> . </td> 
+	<td> - </td> 
+	<td> <img></td> 
+	<td> prep + the word than
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> wulya_upameya</font>-<font color="#0000FF">upamAna</font></td> 
+	<td> <font color="FF0000"> Rama </font>is as intelligent as <font color="#0000FF">John</font> . </td> 
+	<td> This relation connects two nouns which are similar in comparision.</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> kqxanwa</font>-<font color="#0000FF">kqxanwa</font></td> 
+	<td> It is fun to <font color="FF0000"> try </font>to <font color="#0000FF">beat</font> the program . </td> 
+	<td> Connects non-finite verb with another non-finite verb. ***</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">RaRTI_viSeRaNa</font></td> 
+	<td> <font color="FF0000"> Jane </font>'s <font color="#0000FF">dog</font> is black . </td> 
+	<td> This connects possessive nouns or determiner (her, his, my, your, 
+their, our or its) with nouns or possessive nouns that have possessive 
+suffix "s" or "'" to a noun </td> 
+	<td> Direct mapping</td> 
+	<td> poss
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> viSeRya</font>-<font color="#0000FF">jo_samAnAXikaraNa</font></td> 
+	<td> The <font color="FF0000"> dog </font>, <font color="#0000FF">who</font> chased me was black . </td> 
+	<td> - </td> 
+	<td> <img></td> 
+	<td> rel + nsubj + rcmod
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> saMjFA</font>-<font color="#0000FF">saMjFA_samAnAXikaraNa</font></td> 
+	<td> Rama gave a book to <font color="FF0000"> Dashrath </font>, the king of Ayodhya . </td> 
+	<td> This relation connects nouns to post-nominal noun modifiers surrounded by commas. </td> 
+	<td> Direct mapping</td> 
+	<td> appos
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> samAsa_viSeRya</font>-<font color="#0000FF">samAsa_viSeRaNa</font></td> 
+	<td> The income <font color="#0000FF">tax</font> <font color="FF0000"> proposal </font>was rejected . </td> 
+	<td> -</td> 
+	<td> Direct mapping</td> 
+	<td> nn
+</td> </tr><tr><td> 
+</td> </tr><tr><td> <font color="FF0000"> nirXArya</font>-<font color="#0000FF">nirXAraNa</font></td> 
+	<td> <font color="FF0000"> Which </font>of your <font color="#0000FF">parents</font> do you feel closer to . </td> 
+	<td> This relation connects where a sub group is part of a larger group. ***</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr><tr><td> idiom_type_1</td> 
+	<td> ***</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> idiom_type_2</td> 
+	<td> ***</td> 
+	<td> - </td> 
+	<td> ????? </td> 
+	<td> ----</td> 
+	<td> 
+</td> </tr><tr><td> <font color="FF0000"> subject</font>-<font color="#0000FF">vAkyasamAnAXikaraNa</font></td> 
+	<td> The <font color="FF0000"> question </font>is who <font color="#0000FF">killed</font> Nicole . </td> 
+	<td> ***</td> 
+	<td> Direct mapping</td> 
+	<td> ?????
+</td> </tr><tr><td> 
+</td> </tr></tbody></table>
+</body></html>

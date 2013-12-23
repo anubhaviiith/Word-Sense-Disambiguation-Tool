@@ -1,0 +1,149 @@
+timestamp: 2013-10-04T00:36:12.956512
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2013-10-04T00:36:13.210960
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-10-04T00:36:13.448231
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE
+);
+success!
+timestamp: 2013-10-04T00:36:13.692743
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group(id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2013-10-04T00:36:13.948805
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2013-10-04T00:36:14.238247
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user(id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2013-10-04T00:36:14.523290
+CREATE TABLE words(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    word CHAR(512)
+);
+success!
+timestamp: 2013-10-04T00:36:14.816196
+CREATE TABLE sentences(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    esentence CHAR(512),
+    hsentence CHAR(512)
+);
+success!
+timestamp: 2013-10-04T00:36:15.104442
+CREATE TABLE links(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    wid CHAR(512),
+    sid CHAR(512)
+);
+success!
+timestamp: 2013-10-04T00:36:15.362803
+CREATE TABLE rules(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userid CHAR(512),
+    wid CHAR(512),
+    sid CHAR(512),
+    translation CHAR(512),
+    reason CHAR(512)
+);
+success!
+timestamp: 2013-10-06T10:21:07.787004
+ALTER TABLE sentences ADD category CHAR(512);
+timestamp: 2013-11-09T09:44:26.552714
+ALTER TABLE rules ADD name CHAR(512);
+timestamp: 2013-11-09T09:44:26.694269
+ALTER TABLE rules ADD linkid CHAR(512);
+timestamp: 2013-11-09T09:44:26.820097
+ALTER TABLE rules ADD relation CHAR(512);
+timestamp: 2013-11-09T09:44:26.932622
+ALTER TABLE rules ADD property CHAR(512);
+timestamp: 2013-11-09T09:44:27.056527
+ALTER TABLE rules ADD type CHAR(512);
+timestamp: 2013-11-09T10:11:57.068320
+CREATE TABLE reason(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    type CHAR(512),
+    relation CHAR(512),
+    property CHAR(512)
+);
+success!
+timestamp: 2013-11-09T10:11:57.221617
+ALTER TABLE rules ADD reasonid CHAR(512);
+timestamp: 2013-11-13T10:43:28.592367
+ALTER TABLE rules ADD typ CHAR(512);
+timestamp: 2013-11-14T01:42:37.625447
+CREATE TABLE user_level(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    email CHAR(512),
+    level CHAR(512)
+);
+success!
+timestamp: 2013-11-14T01:42:37.933201
+ALTER TABLE sentences ADD level CHAR(512);
+timestamp: 2013-11-15T14:51:09.496350
+ALTER TABLE links ADD typ CHAR(512);
+timestamp: 2013-11-15T14:51:09.633628
+CREATE TABLE rel_all(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    wid CHAR(512),
+    sid CHAR(512),
+    relation CHAR(512)
+);
+success!
+timestamp: 2013-11-15T14:51:09.768048
+CREATE TABLE rel_rule(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    wid CHAR(512),
+    sid CHAR(512),
+    relation CHAR(512)
+);
+success!
+timestamp: 2013-11-18T16:03:36.235956
+CREATE TABLE novice(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userid CHAR(512),
+    sid CHAR(512),
+    wid CHAR(512),
+    relation INTEGER,
+    property INTEGER,
+    both INTEGER
+);
+success!
+timestamp: 2013-11-18T16:53:09.172566
+ALTER TABLE novice ADD word CHAR(512);

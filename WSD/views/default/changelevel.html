@@ -1,0 +1,14 @@
+{{extend 'layout.html'}}
+
+<form method='POST'>
+If new registered user : <input type='text' name='new_email'><br>
+{{email = db(db.auth_user).select(db.auth_user.email)}}
+Change level of existing user : 
+<select name='emailq'>
+{{for i in email:}}
+<option value='{{=i.email}}'>{{=i.email}}</option>
+{{pass}}
+</select><br>
+Level : <input type='integer' name='level'><br>
+<input type='submit' name='submit' value='submit'>
+</form>
